@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #22333b;
   --foreground: #171717;
 }
 
@@ -37,8 +37,9 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border: black 1px solid;
+  border: #172228 1px solid;
   border-radius: 10px;
+  background-color: white;
 }
 
 .card-title {
