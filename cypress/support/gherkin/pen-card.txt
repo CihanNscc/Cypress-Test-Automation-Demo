@@ -1,0 +1,59 @@
+Feature: Pen Card Component Functionality
+  As a user, I want to be able to select a pen color, adjust the quantity of pens, and proceed to checkout using the Pen Card component.
+
+  Background:
+    Given I am on the product page
+    And the "PenCard" component is displayed
+
+  Scenario: Selecting a pen color
+    When I click on the color button for "gold"
+    Then the color choice should change to "gold"
+
+  Scenario: Incrementing the pen quantity
+    Given the initial quantity of pens is 0
+    When I click the increment button
+    Then the pen quantity should be 1
+
+  Scenario: Decrementing the pen quantity
+    Given the current pen quantity is 0
+    When I click the decrement button
+    Then the pen quantity should still be 0
+
+  Scenario: Manually entering pen quantity
+    Given the current pen quantity is 0
+    When I manually enter "5" in the input field
+    Then the pen quantity should change to 5
+	And the checkout button should be enabled
+	
+  Scenario: Manually entering pen quantity
+    Given the current pen quantity is 0
+    When I manually enter "5" in the input field
+	And click the decrement button
+    Then the pen quantity should change to 4
+	
+  Scenario: Manually entering a pen quantity greater than 10
+    Given the current pen quantity is 0
+    When I manually enter "15" in the input field
+    Then the pen quantity should change to 10
+
+  Scenario: Manually entering an invalid pen quantity
+    Given the current pen quantity is 0
+    When I manually enter "asd" in the input field
+    Then the pen quantity should remain 0
+
+  Scenario: Checkout button is disabled when pen quantity is 0
+    Given the current pen quantity is 0
+    Then the checkout button should be disabled
+
+  Scenario: Proceeding to checkout with a valid pen quantity
+    Given the pen quantity is 3
+    And I have selected the color "silver"
+    When I click the checkout button
+    Then a confirmation modal should appear
+    And the modal should display "Are you sure you want to checkout 3 silver colored pens?"
+
+  Scenario: Confirming the checkout in the modal
+    Given the confirmation modal is displayed
+    When I click the confirm button in the modal
+    Then the pen quantity should reset to 0
+    And the color choice should reset to the default color

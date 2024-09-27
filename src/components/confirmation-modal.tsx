@@ -14,7 +14,7 @@ const ConfirmationModal: React.FC<ModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
+    <div id="confirmation-modal" className="modal-overlay">
       <div className="modal-content">
         {children}
         <div className="modal-buttons">

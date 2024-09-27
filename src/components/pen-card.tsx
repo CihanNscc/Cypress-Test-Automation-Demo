@@ -53,7 +53,7 @@ function PenCard() {
   return (
     <>
       <div>
-        <div className="card">
+        <div id="pen-card" className="card">
           <div className="card-title">
             <Image src={pen} className="product-image" alt="Pen" />
             <h2>Cihan's Drawing Pen</h2>
